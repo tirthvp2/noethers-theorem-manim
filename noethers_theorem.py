@@ -112,7 +112,7 @@ class NoethersTheorem(Scene):
         noether_text1 = Tex(r"The conserved quantity (Noether current):", font_size=32, color=WHITE)
         noether_text2 = Tex(r"$\frac{\partial L}{\partial \dot{q}}$", font_size=32, color=WHITE)
         noether_text3 = Tex(r"is constant if $L$ is invariant.", font_size=32, color=WHITE)
-        noether_group = VGroup(noether_text1, noether_text2, noether_text3).arrange(DOWN, buff=0.2).to_edge(DOWN)
+        noether_group = VGroup(noether_text1, noether_text2, noether_text3).arrange(DOWN, buff=0.2).shift(DOWN * 2)
         proof_objects.add(noether_group)
 
         self.play(Write(noether_group))
@@ -136,7 +136,7 @@ class NoethersTheorem(Scene):
         spatial_text1 = Tex(r"Spatial Symmetry ($q \to q + a$):", font_size=32, color=WHITE)
         spatial_text2 = Tex(r"$\frac{\partial L}{\partial \dot{q}} = m \dot{q}$", font_size=32, color=WHITE)
         spatial_text3 = Tex(r"Momentum $p = m \dot{q}$ is conserved.", font_size=32, color=WHITE)
-        spatial_group = VGroup(spatial_text1, spatial_text2, spatial_text3).arrange(DOWN, buff=0.2).shift(RIGHT * 5 + UP * 1)
+        spatial_group = VGroup(spatial_text1, spatial_text2, spatial_text3).arrange(DOWN, buff=0.2).to_edge(DOWN)
         proof_objects.add(spatial_group)
 
         # Fade out previous proof steps to show the example
@@ -160,12 +160,12 @@ class NoethersTheorem(Scene):
 
         # Create a table-like layout for examples
         examples_list = VGroup(
-            Tex("Time Symmetry → Energy Conservation", font_size=28, color=WHITE),
-            Tex("Spatial Symmetry → Momentum Conservation", font_size=28, color=WHITE),
-            Tex("Rotational Symmetry → Angular Momentum Conservation", font_size=28, color=WHITE),
-            Tex("Gauge Symmetry → Charge Conservation", font_size=28, color=WHITE),
-            Tex("Time Reversal Symmetry → No Conservation (Classical)", font_size=28, color=WHITE)
-        ).arrange(DOWN, buff=0.5, aligned_edge=LEFT).shift(LEFT * 4 + UP * 1)
+            Tex("Time Symmetry $\\rightarrow$ Energy Conservation", font_size=28, color=WHITE),
+            Tex("Spatial Symmetry $\\rightarrow$ Momentum Conservation", font_size=28, color=WHITE),
+            Tex("Rotational Symmetry $\\rightarrow$ Angular Momentum Conservation", font_size=28, color=WHITE),
+            Tex("Gauge Symmetry $\\rightarrow$ Charge Conservation", font_size=28, color=WHITE),
+            Tex("Time Reversal Symmetry $\\rightarrow$ No Conservation (Classical)", font_size=28, color=WHITE)
+        ).arrange(DOWN, buff=0.5, aligned_edge=LEFT).shift(UP * 1).to_edge(LEFT)
 
         examples_objects.add(examples_list)
 
@@ -189,10 +189,10 @@ class NoethersTheorem(Scene):
         # Gauge Symmetry: Charge with field lines
         charge = Dot(color=RED).next_to(examples_list[3], RIGHT, buff=2)
         field_lines = VGroup(
-            Arrow(charge.get_center(), charge.get_center() + UP * 0.8, color=YELLOW, buff=0),
-            Arrow(charge.get_center(), charge.get_center() + DOWN * 0.8, color=YELLOW, buff=0),
-            Arrow(charge.get_center(), charge.get_center() + LEFT * 0.8, color=YELLOW, buff=0),
-            Arrow(charge.get_center(), charge.get_center() + RIGHT * 0.8, color=YELLOW, buff=0)
+            Arrow(charge.get_center(), charge.get_center() + UP * 0.5, color=YELLOW, buff=0),
+            Arrow(charge.get_center(), charge.get_center() + DOWN * 0.5, color=YELLOW, buff=0),
+            Arrow(charge.get_center(), charge.get_center() + LEFT * 0.5, color=YELLOW, buff=0),
+            Arrow(charge.get_center(), charge.get_center() + RIGHT * 0.5, color=YELLOW, buff=0)
         )
         gauge_visual = VGroup(charge, field_lines)
 
